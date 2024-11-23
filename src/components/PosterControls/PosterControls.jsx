@@ -6,6 +6,24 @@ import { FastAverageColor } from 'fast-average-color';
 import Color from 'color';
 import NumberInput from '../NumberInput/NumberInput';
 
+/*
+  Color (fac.getColor) example output:
+  {
+    "value": [
+      54,
+      87,
+      110,
+      255
+    ],
+    "rgb": "rgb(54,87,110)",
+    "rgba": "rgba(54,87,110,1)",
+    "hex": "#36576e",
+    "hexa": "#36576eff",
+    "isDark": true,
+    "isLight": false
+  }
+*/
+
 export const PosterControls = ({
   setPosterConfig = () => {},
 }) => {
@@ -23,34 +41,18 @@ export const PosterControls = ({
     const file = acceptedFiles[0];
     const reader = new FileReader();
     reader.onload = () => {
+      // Get the dominant color of the image
       const img = new Image();
       img.src = reader.result;
       img.onload = () => {
         const fac = new FastAverageColor();
         const color = fac.getColor(img);
-
-        /*
-          Example output:
-          {
-            "value": [
-              54,
-              87,
-              110,
-              255
-            ],
-            "rgb": "rgb(54,87,110)",
-            "rgba": "rgba(54,87,110,1)",
-            "hex": "#36576e",
-            "hexa": "#36576eff",
-            "isDark": true,
-            "isLight": false
-          }
-        */
-
         let dominantColor = Color(color.rgb);
         setDividerColor(dominantColor);
       };
-
+      // Reset the image scale on a new image
+      setImageScale(1);
+      // Set the image state
       setImage({
         name: file.name,
         src: reader.result,

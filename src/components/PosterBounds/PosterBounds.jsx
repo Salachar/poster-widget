@@ -17,16 +17,16 @@ export const PosterBounds = ({
     }
     setIsDragging(true);
     setStartPosition({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
+      x: e.clientX - position.x * (posterConfig.zoom || 1),
+      y: e.clientY - position.y * (posterConfig.zoom || 1),
     });
   };
 
   const handleMouseMove = (e) => {
     if (isDragging) {
       setPosition({
-        x: e.clientX - startPosition.x,
-        y: e.clientY - startPosition.y,
+        x: (e.clientX - startPosition.x) / (posterConfig.zoom || 1),
+        y: (e.clientY - startPosition.y) / (posterConfig.zoom || 1),
       });
     }
   };
