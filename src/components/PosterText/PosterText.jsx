@@ -1,5 +1,4 @@
 import React from 'react';
-import Draggable from 'react-draggable';
 import { Box } from '@chakra-ui/react';
 
 import {
@@ -76,10 +75,9 @@ export const PosterText = ({
           fontSize="42px"
           lineHeight="46px"
           letterSpacing="3px"
-          // fontWeight="bold"
+          fontWeight="bold"
           textTransform="uppercase"
           backgroundColor="rgba(40, 40, 40, 1)"
-          // color="white"
           color={getCollectionTextColor(dividerColor)}
           padding="12px 24px"
           fontFamily="JetBrains Mono"
