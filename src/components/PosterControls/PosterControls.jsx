@@ -50,8 +50,14 @@ export const PosterControls = ({
         let dominantColor = Color(color.rgb);
         setDividerColor(dominantColor);
       };
-      // Reset the image scale on a new image
+      // Reset inputs to default values
+      setZoom(0.5);
+      setBrightness(100);
       setImageScale(1);
+      setTitle('');
+      setTitleSize(92);
+      setSubtitle('');
+      setPosterType('collection');
       // Set the image state
       setImage({
         name: file.name,
