@@ -57,8 +57,8 @@ export const PosterText = ({
         {subtitle && (
           <Box
             {...textStyles}
-            fontSize="36px"
-            lineHeight="36px"
+            fontSize="46px"
+            lineHeight="46px"
             fontWeight="400"
             margin="8px 0 0 0"
             letterSpacing="2px"
@@ -72,7 +72,7 @@ export const PosterText = ({
       {posterType && (
         <Box
           {...textStyles}
-          fontSize="42px"
+          fontSize="46px"
           lineHeight="46px"
           letterSpacing="3px"
           fontWeight="bold"
