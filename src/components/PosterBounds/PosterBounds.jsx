@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box } from '@chakra-ui/react';
 import { PosterText } from '../PosterText/PosterText';
 
 export const PosterBounds = ({
@@ -77,6 +78,18 @@ export const PosterBounds = ({
           zIndex: -2,
         }}
         alt=""
+      />
+      <div
+        style={{
+          position: 'fixed',
+          top: '0',
+          left: '0',
+          right: '0',
+          bottom: '0',
+          backgroundColor: 'rgba(40, 40, 40, 1)',
+          zIndex: -3,
+          transform: 'scale(10)',
+        }}
       />
       <PosterText
         posterConfig={posterConfig}

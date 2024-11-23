@@ -101,7 +101,7 @@ export const PosterControls = ({
       right="0"
       p="4"
       width="300px"
-      backgroundColor="white"
+      backgroundColor="gray.300"
       boxShadow="md"
       borderRadius="md"
     >
@@ -111,6 +111,7 @@ export const PosterControls = ({
         textAlign="center"
         p="4"
         mb="4"
+        backgroundColor="white"
         {...getRootProps()}
       >
         <input {...getInputProps()} />
@@ -161,6 +162,7 @@ export const PosterControls = ({
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          backgroundColor="white"
         />
       </Box>
 
@@ -179,6 +181,7 @@ export const PosterControls = ({
           placeholder="Subtitle"
           value={subtitle}
           onChange={(e) => setSubtitle(e.target.value)}
+          backgroundColor="white"
         />
       </Box>
 
@@ -186,7 +189,6 @@ export const PosterControls = ({
         <Input
           type="color"
           value={dividerColor.hex()}
-          // onChange={(e) => setDividerColor(e.target.value)}
           onChange={(e) => setDividerColor(Color(e.target.value))}
         />
       </Box>
@@ -196,6 +198,7 @@ export const PosterControls = ({
           placeholder="Poster Type"
           value={posterType}
           onChange={(e) => setPosterType(e.target.value)}
+          backgroundColor="white"
         />
       </Box>
 

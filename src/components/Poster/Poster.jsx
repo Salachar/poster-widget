@@ -52,19 +52,6 @@ export const Poster = ({ posterConfig }) => {
         }}
         alt=""
       />
-{/*
-      <img
-        src={image.src}
-        width={imageWidth}
-        height={imageHeight}
-        style={{
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          maxWidth: 'none',
-        }}
-        alt=""
-      /> */}
 
       <PosterBounds
         posterConfig={posterConfig}

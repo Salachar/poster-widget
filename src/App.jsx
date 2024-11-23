@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <ChakraProvider value={defaultSystem}>
-      <div>
+      <Box>
         <Poster
           posterConfig={posterConfig}
         />
@@ -19,7 +19,7 @@ const App = () => {
           posterConfig={posterConfig}
           setPosterConfig={setPosterConfig}
         />
-      </div>
+      </Box>
     </ChakraProvider>
   )
 }
