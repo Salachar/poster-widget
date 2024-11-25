@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+
 import { PosterBounds } from '../PosterBounds/PosterBounds';
+
+import config from '../../config';
 
 export const Poster = ({ posterConfig }) => {
   const [image, setImage] = useState({});
@@ -10,9 +13,9 @@ export const Poster = ({ posterConfig }) => {
     if (!e.target.width || !e.target.height) {
       return;
     }
-    if (e.target.width < window.POSTER_WIDTH || e.target.height < window.POSTER_HEIGHT) {
-      const widthRatio = window.POSTER_WIDTH / e.target.width;
-      const heightRatio = window.POSTER_HEIGHT / e.target.height;
+    if (e.target.width < config.width || e.target.height < config.height) {
+      const widthRatio = config.width / e.target.width;
+      const heightRatio = config.height / e.target.height;
       const scale = Math.max(widthRatio, heightRatio);
       setImageWidth(e.target.width * scale);
       setImageHeight(e.target.height * scale);
@@ -33,8 +36,8 @@ export const Poster = ({ posterConfig }) => {
       id="poster"
       style={{
         zoom: posterConfig.zoom,
-        minWidth: `${window.POSTER_WIDTH}px`,
-        minHeight: `${window.POSTER_HEIGHT}px`,
+        minWidth: `${config.width}px`,
+        minHeight: `${config.height}px`,
         position: 'relative',
       }}
     >

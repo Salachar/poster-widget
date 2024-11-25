@@ -4,7 +4,10 @@ import { useCallback, useEffect, useState } from 'react';
 import html2canvas from 'html2canvas';
 import { FastAverageColor } from 'fast-average-color';
 import Color from 'color';
+
 import NumberInput from '../NumberInput/NumberInput';
+
+import { getNewImageName } from "../../utils/file";
 
 /*
   Color (fac.getColor) example output:
@@ -217,7 +220,11 @@ export const PosterControls = ({
             const imgData = canvas.toDataURL('image/png');
             const link = document.createElement('a');
             link.href = imgData;
-            link.download = 'poster.png';
+            link.download = getNewImageName({
+              title,
+              subtitle,
+              posterType,
+            });
             link.click();
             style.remove();
             poster.style.zoom = currentZoom;

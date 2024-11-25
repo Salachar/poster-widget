@@ -1,16 +1,36 @@
-import React, { useState } from 'react';
-import { Box } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+
 import { PosterText } from '../PosterText/PosterText';
 
+import config from '../../config';
+
 export const PosterBounds = ({
-  posterConfig = {},
+  posterConfig = {
+    imageScale: 1,
+    brightness: 0,
+    zoom: 1,
+  },
   image = {},
-  imageWidth,
-  imageHeight,
+  imageWidth = 0,
+  imageHeight = 0,
 }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
+  const [scaledDimensions, setScaledDimensions] = useState({
+    width: 0,
+    height: 0
+  });
+
+  useEffect(() => {
+    const scale = posterConfig.imageScale || 1;
+    const width = imageWidth * scale;
+    const height = imageHeight * scale;
+    setScaledDimensions({
+      width: !isNaN(width) ? width : 0,
+      height: !isNaN(height) ? height : 0,
+    });
+  }, [imageWidth, imageHeight, posterConfig.imageScale]);
 
   const handleMouseDown = (e) => {
     if (e.target.closest('.poster-text')) {
@@ -39,8 +59,8 @@ export const PosterBounds = ({
   return (
     <div
       style={{
-        width: `${window.POSTER_WIDTH * 0.75}px`,
-        height: `${window.POSTER_HEIGHT * 0.75}px`,
+        width: `${config.poster.width}px`,
+        height: `${config.poster.height}px`,
         outline: '5px solid #ed4545',
         position: 'absolute',
         top: `${position.y}px`,
@@ -56,8 +76,8 @@ export const PosterBounds = ({
     >
       <div
         style={{
-          width: `${imageWidth * posterConfig.imageScale}px`,
-          height: `${imageHeight * posterConfig.imageScale}px`,
+          width: `${scaledDimensions.width}px`,
+          height: `${scaledDimensions.height}px`,
           backgroundColor: `rgba(0, 0, 0, ${1 - (posterConfig.brightness / 100 || 0)})`,
           position: 'fixed',
           top: '0',
@@ -68,8 +88,8 @@ export const PosterBounds = ({
       />
       <img
         src={image.src}
-        width={imageWidth * posterConfig.imageScale}
-        height={imageHeight * posterConfig.imageScale}
+        width={scaledDimensions.width}
+        height={scaledDimensions.height}
         style={{
           position: 'fixed',
           top: '0',

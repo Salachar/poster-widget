@@ -39,7 +39,7 @@ export const PosterText = ({
       />
       <Box
         backgroundColor={titleBackgroundColor}
-        padding="24px 96px 24px 24px"
+        padding="24px 24px 24px 24px"
       >
         {title && (
           <Box
